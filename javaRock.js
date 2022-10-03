@@ -10,11 +10,11 @@ function getComputerChoice(arr) {
 }
 
 
-const playerSelection = prompt('Choose rock, paper, or scissors.').toLowerCase();
 
-const computerSelection = getComputerChoice(choices);
 
-function singleRound(computerSelection,playerSelection) {
+function singleRound() {
+    let playerSelection = prompt('Choose rock, paper, or scissors.').toLowerCase();
+    let computerSelection = getComputerChoice(choices);
 
 
     if (computerSelection == 'rock' && playerSelection == 'scissors') {
@@ -31,11 +31,19 @@ function singleRound(computerSelection,playerSelection) {
         return alert('Computer chose paper. You won');
     } else if (playerSelection ==computerSelection) {
         return alert('tie');
-    } else return alert('Try again') ;
+    } else return alert('Please choose rock, paper, or scissors');
         
 }
-   
-console.log(singleRound(computerSelection,playerSelection));
+
+/*New function game that plays 5 rounds
+keeps score
+reports winner or loser at end*/
+
+for (i=0;i<5;i++)
+{
+    singleRound(i);
+}
+
 
 
 
