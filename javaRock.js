@@ -9,29 +9,28 @@ function getComputerChoice(arr) {
     return rann;
 }
 
+let playerScore= 0;
+let computerScore= 0;
 
+    
 
-
-function singleRound() {
-    let playerSelection = prompt('Choose rock, paper, or scissors.').toLowerCase();
-    let computerSelection = getComputerChoice(choices);
-
-
+function singleRound(computerSelection,playerSelection) {
+    
     if (computerSelection == 'rock' && playerSelection == 'scissors') {
-        return alert( 'Computer chose rock. You lost.');
+        return 'You lost';
     } else if (computerSelection=='scissors' && playerSelection=='rock') {
-        return alert('Computer chose scissors. You won');
+        return 'You won';
     } else if (computerSelection=='paper' && playerSelection=='rock') {
-        return alert('Computer chose paper. You lose');
+        return 'You lost';
     } else if (computerSelection=='scissors' && playerSelection=='paper'){
-        return alert('Computer chose scissors. You lost.');
+        return 'You lost';
     } else if (computerSelection=='rock' && playerSelection=='paper'){
-        return alert('Computer chose rock. You won.');
+        return 'You won';
     } else if (computerSelection== 'paper' && playerSelection=='scissors'){
-        return alert('Computer chose paper. You won');
+        return 'You won';
     } else if (playerSelection ==computerSelection) {
-        return alert('tie');
-    } else return alert('Please choose rock, paper, or scissors');
+        return 'tie';
+    } else return 'Please choose rock, paper, or scissors';
         
 }
 
@@ -39,11 +38,21 @@ function singleRound() {
 keeps score
 reports winner or loser at end*/
 
-for (i=0;i<5;i++)
-{
-    singleRound(i);
+
+
+function game () {
+    for (i=0;i<5;i++){
+        let playerSelection = prompt('Choose rock, paper, or scissors.').toLowerCase();
+        let computerSelection = getComputerChoice(choices);
+        console.log(singleRound(playerSelection,computerSelection));
+        let result = singleRound(playerSelection,computerSelection);
+        if (result == 'You won') {
+            playerScore += 1;
+            console.log('Player score:' + playerScore);
+        } else if ( result == 'You lost') {
+            computerScore += 1;
+            console.log('Computer score:'+ computerScore);
+        }
 }
-
-
-
-
+}
+console.log(game());
