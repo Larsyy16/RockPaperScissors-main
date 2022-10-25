@@ -1,4 +1,4 @@
-console.log('hello branch');
+console.log('hello branch2');
 
 /* part 1 */
 let choices = ['rock','paper','scissors'];
