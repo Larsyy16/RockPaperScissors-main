@@ -16,93 +16,61 @@ function getComputerChoice(arr) {
 
 let buttons = Array.prototype.slice.call(document.querySelectorAll("button.gameButton"));
 
+const container = document.querySelector('#container');
+const para = document.createElement('p');
+const playerScore = document.createElement('p');
+const computerScore = document.createElement('p');
+const finalResult = document.createElement('p');
+let player = 0;
+let computer = 0;
+
 buttons.forEach(function(btn) {
     btn.addEventListener("click",function() {
         let computerSelection = getComputerChoice(choices);
         let result = this.textContent;
-        console.log(result);
-        console.log(computerSelection);
         if (computerSelection == 'rock' && result==="scissors") {
-            alert( 'You lost');
+            para.textContent = 'You lost';
+            computer += 1;
+            computerScore.textContent = `Computer Score: ${computer}`;
         } else if  (computerSelection=='scissors' && result==="rock") {
-            alert( 'You won'); 
+            para.textContent = 'You won';
+            player += 1;
+            playerScore.textContent = `Player Score: ${player}`;
         } else if (computerSelection=='paper' && result=='rock') {
-            alert( 'You lost');
+            para.textContent = 'You lost';
+            computer += 1;
+            computerScore.textContent = `Computer Score: ${computer}`
         } else if (computerSelection=='scissors' && result=='paper'){
-            alert( 'You lost');
+            para.textContent = 'You lost';
+            computer += 1;
+            computerScore.textContent = `Computer Score: ${computer}`
         } else if (computerSelection=='rock' && result=='paper'){
-            alert( 'You won');
+            para.textContent = 'You won';
+            player += 1;
+            playerScore.textContent = `Player Score: ${player}`;
         } else if (computerSelection== 'paper' && result=='scissors'){
-            alert( 'You won');
+            para.textContent = 'You won';
+            player += 1;
+            playerScore.textContent = `Player Score: ${player}`;
         } else if (result ==computerSelection) {
-            alert( 'tie');
-        } else alert( 'Please choose rock, paper, or scissors');
-            
-    });
-    
-    });
-
-
-
-
-
-
-/*function singleRound(computerSelection,this.textContext) {
-    
-    if (computerSelection == 'rock' && this.textContext == 'scissors') {
-        alert( 'You lost)';
-    } else if (computerSelection=='scissors' && this.textContext=='rock') {
-        alert( 'You won');
-    } else if (computerSelection=='paper' && this.textContext=='rock') {
-        alert( 'You lost)';
-    } else if (computerSelection=='scissors' && this.textContext=='paper'){
-        alert( 'You lost)';
-    } else if (computerSelection=='rock' && this.textContext=='paper'){
-        alert( 'You won');
-    } else if (computerSelection== 'paper' && this.textContext=='scissors'){
-        alert( 'You won');
-    } else if (this.textContext ==computerSelection) {
-        alert( 'tie';
-  )  } else alert( 'Please c)hoose rock, paper, or scissors';
+            para.textContent = 'Tie';
+        } 
         
-}/*
 
-
-let playerScore= 0;
-let computerScore= 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*New function game that plays 5 rounds
-keeps score
-reports winner or loser at end*/
-
-/*
-
-function game () {
-    for (i=0;i<5;i++){
-        let this.textContext = prompt('Choose rock, paper, or scissors.').toLowerCase();
-        let computerSelection = getComputerChoice(choices);
-        console.log(singleRound(this.textContext,computerSelection));
-        let result = singleRound(this.textContext,computerSelection);
-        if (result == 'You won') {
-            playerScore += 1;
-            console.log('Player score:' + playerScore);
-        } else if ( result == 'You lost') {
-            computerScore += 1;
-            console.log('Computer score:'+ computerScore);
+        
+        let elems= document.getElementsByClassName("gameButton");
+        for(let i = 0; i < elems.length; i++) {
+            if (player==5 || computer==5) {
+                elems[i].disabled = true; 
+            }
         }
-}
-}
-console.log(game());
-*/
+
+        
+    });
+});
+    container.appendChild(para);
+    container.appendChild(playerScore);
+    container.appendChild(computerScore);
+ 
+container.appendChild(computerScore);
+container.appendChild(playerScore);
